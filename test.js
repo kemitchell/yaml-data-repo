@@ -4,6 +4,7 @@ import addFormats from 'ajv-formats'
 import fs from 'node:fs'
 import records from './load.js'
 import tape from 'tape'
+import validate from './validate.js'
 import yaml from 'js-yaml'
 
 const ajv = new Ajv({ allErrors: true })
@@ -16,12 +17,18 @@ tape('schema', test => {
   test.end()
 })
 
-const validate = ajv.compile(schema)
-
 tape('records conform to schema', test => {
   for (const { file, record } of records) {
-    validate(record)
-    test.deepEqual(validate.errors, null, file)
+    ajv.validate(schema, record)
+    test.deepEqual(ajv.errors, null, file)
+  }
+  test.end()
+})
+
+tape('records pass validation', test => {
+  for (const { file, record } of records) {
+    const errors = validate(record)
+    test.deepEqual(errors, [], file)
   }
   test.end()
 })
