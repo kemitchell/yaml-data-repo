@@ -1,0 +1,8 @@
+type: object
+required: [type, name]
+additionalProperties: false
+properties:
+  type:
+    const: fruit
+  name:
+    type: string
