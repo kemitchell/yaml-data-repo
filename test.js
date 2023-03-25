@@ -1,3 +1,4 @@
+// This module validates the JSON Schema and data records.
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import fs from 'node:fs'

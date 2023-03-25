@@ -1,3 +1,4 @@
+# This file defines the JSON Schema for data records.
 type: object
 required: [type, name]
 additionalProperties: false

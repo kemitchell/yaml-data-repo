@@ -1,3 +1,4 @@
+// This module loads all data records from disk.
 import fs from 'node:fs'
 import path from 'node:path'
 import yaml from 'js-yaml'
